@@ -17,7 +17,7 @@ async function bootstrap() {
       servers: envs.natsServers,
     },
   });
-  const logger = new Logger('OrdersMS-main');
+  const logger = new Logger('AuthMS-main');
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
@@ -26,6 +26,6 @@ async function bootstrap() {
   );
 
   await app.listen();
-  logger.log(`Orders Microservices Running on port ${envs.port}`);
+  logger.log(`Auth Microservices Running on port ${envs.port}`);
 }
 bootstrap();
