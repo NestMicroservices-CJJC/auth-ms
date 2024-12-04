@@ -1,11 +1,11 @@
 import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
-import { PrismaClient } from '@prisma/client';
-import { LoginUserDto, RegisterUserDto } from './dto';
-import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { PrismaClient } from '@prisma/client';
+import * as bcrypt from 'bcrypt';
 import { envs } from 'src/config';
+import { LoginUserDto, RegisterUserDto } from './dto';
+import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 @Injectable()
 export class AuthService extends PrismaClient implements OnModuleInit {
@@ -17,7 +17,7 @@ export class AuthService extends PrismaClient implements OnModuleInit {
 
   onModuleInit() {
     this.$connect();
-    this.logger.log('MongoDB connected!');
+    this.logger.log('Auth-DB connected!');
   }
 
   async signJWT(payload: JwtPayload) {
